@@ -24,7 +24,6 @@ class Alumno extends Entity {
 	Alumno() {
 		nombre = ""
 		cursadas = []	
-		tipoAlumno = TipoAlumno.COMUN
 	}
 	
 	@PersistentField
@@ -44,7 +43,7 @@ class Alumno extends Entity {
 
 	@Override
 	String toString() {
-		nombre + " (" + tipoAlumno + ") - cursando " + cursadas.size() + " materias"
+		nombre + " (" + tipoAlumno + ") - cursando " + cursadas.materia.nombre
 	}
 		
 }
