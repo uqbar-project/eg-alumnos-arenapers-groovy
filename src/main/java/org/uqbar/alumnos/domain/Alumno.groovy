@@ -23,7 +23,8 @@ class Alumno extends Entity {
 	
 	Alumno() {
 		nombre = ""
-		cursadas = []	
+		cursadas = []
+		tipoAlumno = TipoAlumno.COMUN	
 	}
 	
 	@PersistentField

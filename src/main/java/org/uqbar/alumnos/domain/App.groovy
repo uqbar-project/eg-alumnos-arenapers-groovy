@@ -11,10 +11,15 @@ class App {
 		println "Configurando homes"
 		Configuration.configure()
 		println "¡Homes configuradas!"
-		HomeAlumnos.instance.createIfNotExists(leandroBarragan)
-		leandroBarragan.tipoAlumno = TipoAlumno.ESTUDIOSO
-		println "Alumno ahora es " + leandroBarragan.tipoAlumno
-		println "Estos son los alumnos: " + HomeAlumnos.instance.allInstances() 
+		def leandro = HomeAlumnos.instance.createIfNotExists(leandroBarragan)
+		println "Alumno es " + leandro.tipoAlumno
+		leandro.tipoAlumno = TipoAlumno.ESTUDIOSO
+		println "Alumno ahora es " + leandro.tipoAlumno
+		HomeAlumnos.instance.update(leandro)
+		println "Estos son los alumnos: " + HomeAlumnos.instance.allInstances()
+		// Exception in thread "main" java.lang.Exception: No se puede hacer query by example con relaciones entre objetos.
+		println "¿Qué alumnos cursan Design?"
+		println HomeAlumnos.instance.searchByExample(new Alumno(cursadas: [new Cursada(materia: new Materia(nombre: "Design"))])) 
 	}
 
 	static def getLeandroBarragan() {

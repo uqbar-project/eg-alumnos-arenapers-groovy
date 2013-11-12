@@ -18,12 +18,15 @@ class HomeAlumnos extends PersistentHome<Alumno> {
 
 	def createIfNotExists(alumno) {
 		println "Busco al alumno"
-		if (this.get(alumno.nombre) == null) {
+		def alumnoDB = this.get(alumno.nombre)
+		if (alumnoDB == null) {
 			println "No existe, creo al alumno"
 			this.create(alumno)
+			alumnoDB = alumno
 		} else {
 			println "Ya existe el alumno"
 		}
+		alumnoDB
 	}
 
 	def Alumno get(String descripcion) {
