@@ -19,7 +19,8 @@ class App {
 		println "Estos son los alumnos: " + HomeAlumnos.instance.allInstances()
 		// Exception in thread "main" java.lang.Exception: No se puede hacer query by example con relaciones entre objetos.
 		println "¿Qué alumnos cursan Design?"
-		println HomeAlumnos.instance.searchByExample(new Alumno(cursadas: [new Cursada(materia: new Materia(nombre: "Design"))])) 
+		def Alumno alumnoPrueba = new Alumno(nombre: "Leandro Barragan")
+		println HomeAlumnos.instance.searchByExample(leandroBarragan) 
 	}
 
 	static def getLeandroBarragan() {
