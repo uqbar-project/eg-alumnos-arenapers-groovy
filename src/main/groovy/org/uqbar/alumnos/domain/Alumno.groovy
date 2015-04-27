@@ -1,5 +1,6 @@
 package org.uqbar.alumnos.domain
 
+import groovy.transform.EqualsAndHashCode
 import org.uqbar.commons.model.Entity
 import org.uqbar.commons.utils.Transactional
 
@@ -13,38 +14,43 @@ import org.uqbar.commons.utils.Observable
 @PersistentClass
 class Alumno extends Entity {
 	
-	String nombre
-	List<Cursada> cursadas
-	TipoAlumno tipoAlumno
+	@PersistentField String nombre
+	@Relation List<Cursada> cursadas 
+	@PersistentField TipoAlumno tipoAlumno
 	
 	enum TipoAlumno {
 		ESTUDIOSO, VAGONETA, COMUN
 	}
 	
-	Alumno() {
+	public Alumno() {
 		nombre = ""
 		cursadas = []
 		tipoAlumno = TipoAlumno.COMUN	
 	}
 	
-	@PersistentField
 	TipoAlumno getTipoAlumno() {
 		tipoAlumno
 	}
 	
-	@PersistentField
+
 	String getNombre() {
 		nombre
 	}
 	
-	@Relation
+	
 	List<Cursada> getCursadas() {
 		cursadas
 	}
 
+	
+	
 	@Override
 	String toString() {
 		nombre + " (" + tipoAlumno + ") - cursando " + cursadas.materia.nombre
+	}
+	
+	def esEstudioso() {
+		tipoAlumno.equals(Alumno.TipoAlumno.ESTUDIOSO)
 	}
 		
 }

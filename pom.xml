@@ -24,7 +24,7 @@
 		<dependency>
     		<groupId>org.uqbar-project</groupId>
     		<artifactId>arena-pers</artifactId>
-    		<version>3.4.0</version>
+    		<version>3.4.1</version>
 		</dependency>		
 		<dependency>
 			<groupId>junit</groupId>
@@ -32,6 +32,14 @@
 			<version>4.1</version>
 			<scope>test</scope>
 		</dependency>
+		<!--  DEPENDENCIA NECESARIA PARA CREAR UN TEST GRAPH DATABASE -->
+		<dependency>
+			<groupId>org.neo4j</groupId>
+			<artifactId>neo4j-kernel</artifactId>
+			<version>1.7.2</version>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>		
 	</dependencies>
 
 	<build>

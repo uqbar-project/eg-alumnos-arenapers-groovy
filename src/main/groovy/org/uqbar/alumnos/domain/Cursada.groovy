@@ -13,15 +13,15 @@ import uqbar.arena.persistence.annotations.Relation
 @PersistentClass
 class Cursada extends Entity {
 
-	String comision
-	Materia materia
+	@PersistentField String comision
+	@Relation Materia materia
 	
-	@PersistentField
+	
 	String getComision() {
 		comision
 	}
 	
-	@Relation
+	
 	Materia getMateria() {
 		materia
 	}
